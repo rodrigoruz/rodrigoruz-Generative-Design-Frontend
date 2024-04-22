@@ -1,42 +1,35 @@
-// Define variables to store references to DOM elements
-const chatBox = document.getElementById('chat-box');
-const userInput = document.getElementById('user-input');
-const sendBtn = document.getElementById('send-btn');
-
-// Function to handle sending user message
 function sendMessage() {
-    // Get user input
-    const message = userInput.value;
-    
-    // Display user message in the chat box
-    displayMessage('You', message);
+    var userInput = document.getElementById("user-input").value;
+    if (userInput.trim() === "") return;
 
-    // Clear the input field
-    userInput.value = '';
+    appendMessage("user", userInput);
+    document.getElementById("user-input").value = "";
 
-    // Call function to send message to the backend
-    sendMessageToBackend(message);
+    fetchResponse(userInput);
 }
 
-// Function to display messages in the chat box
-function displayMessage(sender, message) {
-    const messageElement = document.createElement('div');
-    messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+function appendMessage(sender, message) {
+    var chatBox = document.getElementById("chat-box");
+    var messageElement = document.createElement("div");
+    messageElement.classList.add("message", sender);
+    messageElement.textContent = message;
     chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Function to send user message to the backend
-function sendMessageToBackend(message) {
-    // Send message to backend using fetch or Axios
-    // Implement this function 
+function fetchResponse(userInput) {
+    fetch("/api/ask", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            prompt: userInput,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        appendMessage("bot", data.choices[0].text.trim());
+    })
+    .catch(error => console.error("Error:", error));
 }
-
-// Event listener for send button click
-sendBtn.addEventListener('click', sendMessage);
-
-// Event listener for enter key press in the input field
-userInput.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        sendMessage();
-    }
-});
