@@ -28,7 +28,7 @@ function displayMessage(sender, message) {
 // Function to send user message to the backend
 function sendMessageToBackend(message) {
     // Send message to backend using fetch or Axios
-    // Implement this function based on your backend setup
+    // Implement this function 
 }
 
 // Event listener for send button click
