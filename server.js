@@ -1,9 +1,11 @@
 const express = require("express");
 const axios = require("axios");
+const path = require("path"); // Import the path module
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "public"))); // Serve static files from the 'public' directory
 
 app.post("/api/ask", async (req, res) => {
     const prompt = req.body.prompt;
@@ -27,6 +29,11 @@ app.post("/api/ask", async (req, res) => {
         console.error("Error:", error);
         res.status(500).json({ error: "An error occurred while fetching response from OpenAI API." });
     }
+});
+
+// Serve the index.html file for all other routes
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.listen(port, () => {
