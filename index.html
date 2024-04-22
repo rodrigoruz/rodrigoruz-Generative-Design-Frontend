@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenAI Chatbot</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
 </head>
 <body>
-    <div class="container">
-        <div class="chat-box" id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send</button>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
 </body>
 </html>

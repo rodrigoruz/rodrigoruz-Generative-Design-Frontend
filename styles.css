@@ -1,0 +1,49 @@
+/* Style for the chat container */
+.chat-container {
+    width: 400px; /* Adjust the width as needed */
+    margin: 50px auto; /* Center the container */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* Style for the chat box */
+.chat-box {
+    height: 300px; /* Set a fixed height for the chat box */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Style for chat messages */
+.chat-message {
+    margin-bottom: 10px;
+}
+
+/* Style for user input field */
+#user-input {
+    width: calc(100% - 70px); /* Adjust the width to leave space for the button */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Style for send button */
+#chat-form button {
+    width: 60px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Hover effect for send button */
+#chat-form button:hover {
+    background-color: #0056b3;
+}
